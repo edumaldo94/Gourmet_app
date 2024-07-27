@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEFEF"
+    android:padding="0dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/fotoReceta"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/custom_fab_background"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTitulo" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubirImagen"
+                android:layout_width="124dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="346dp"
+                android:background="@drawable/rectangulo_subirft"
+                android:drawableStart="@drawable/icon_img"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-black"
+                android:padding="8dp"
+                android:text="Subir"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fotoReceta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/etDescripcion"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:textAlignment="center"
+                android:hint="Descripción"
+                android:elevation="4dp"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:minLines="1"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <EditText
+                android:id="@+id/etIngredientes"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:textAlignment="center"
+                android:hint="Ingredientes"
+                android:elevation="4dp"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:minLines="1"
+                android:padding="5dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/cardview_dark_background"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <EditText
+                android:id="@+id/etPasos"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:hint="Pasos"
+                android:elevation="4dp"
+                android:textAlignment="center"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:minLines="1"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <NumberPicker
+                android:id="@+id/etTiempo"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_marginStart="32dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:layout_marginTop="12dp"
+                android:hint="Hora"
+                android:elevation="4dp"
+                android:theme="@style/AppTheme.Picker"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPasos" />
+
+            <EditText
+                android:id="@+id/etPorciones"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:hint="Porciones"
+                android:elevation="4dp"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <Spinner
+                android:id="@+id/etDificultad"
+                android:layout_width="347dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:hint="Dificultad"
+                android:elevation="4dp"
+                android:theme="@style/SpinnerItemStyle"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <Spinner
+                android:id="@+id/etTipoCocina"
+                android:layout_width="347dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:hint="Tipo"
+                android:elevation="4dp"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:theme="@style/SpinnerItemStyle"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCrearReceta"
+                android:layout_width="375dp"
+                android:layout_height="45dp"
+android:layout_marginBottom="15dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/rectangle_6"
+                android:elevation="4dp"
+                android:text="@string/editar"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTipoCocina"
+                app:layout_constraintVertical_bias="0.117" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGuardar"
+                android:layout_width="375dp"
+                android:layout_height="45dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/btnguardar"
+                android:text="@string/Guardar"
+                android:elevation="4dp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnCrearReceta" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBorrar"
+                android:layout_width="375dp"
+                android:layout_height="45dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/btnborrar"
+                android:text="@string/Borrar"
+                android:elevation="4dp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnGuardar" />
+
+            <NumberPicker
+                android:id="@+id/etTiempoMinutos"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:background="@drawable/rectangle_receta_detalle"
+                android:theme="@style/AppTheme.Picker"
+                android:hint="Minutos"
+                android:inputType="number"
+                android:elevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPasos" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:fontFamily="sans-serif-black"
+                android:background="#59FFF3D5"
+                android:textAlignment="center"
+                android:text="Tiempo"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/teal_700"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/etTiempoMinutos"
+                app:layout_constraintHorizontal_bias="0.428"
+                app:layout_constraintStart_toEndOf="@+id/etTiempo"
+                app:layout_constraintTop_toBottomOf="@+id/etPasos" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Hora/s"
+                android:textSize="18dp"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/teal_700"
+                app:layout_constraintEnd_toStartOf="@+id/textView6"
+                app:layout_constraintHorizontal_bias="0.24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTiempo" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/teal_700"
+                android:layout_marginEnd="56dp"
+                android:elevation="4dp"
+                android:text="Minutos"
+                android:textSize="18dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTiempoMinutos" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:background="#EFEFEF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etTitulo"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@null"
+                android:bottomLeftRadius="16dp"
+                android:bottomRightRadius="16dp"
+                android:hint="Título"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:padding="5dp"
+                android:elevation="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:topLeftRadius="0dp"
+                android:topRightRadius="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Descripción"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:background="#59FFF6D5"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoReceta" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#59D5DBFF"
+                android:textAlignment="center"
+                android:text="Ingredientes"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDescripcion" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#59DEFFD5"
+                android:textAlignment="center"
+                android:text="Pasos"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etIngredientes" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#59FFD5D5"
+                android:text="Porciones"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#59D5FBFF"
+                android:textAlignment="center"
+                android:text="Dificultad"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPorciones" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#59FBD5FF"
+                android:textAlignment="center"
+                android:text="Categoria"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:elevation="4dp"
+                android:textAppearance="@style/inicio_de_gourmet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDificultad" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/barra_arriba"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+
+            android:background="@drawable/barra_arriba"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="76dp"
+                    android:layout_height="74dp"
+                    android:src="@drawable/icon_perfil"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.19" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnMostrarReceta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnmostrarreceta"
+                    android:drawableStart="@drawable/ic_detallereceta"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="sans-serif-black"
+                    android:padding="8dp"
+                    android:text="Ver Mas Recetas"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgPerfil"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.32999998" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

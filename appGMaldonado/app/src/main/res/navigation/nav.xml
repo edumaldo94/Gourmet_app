@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/page_inicio">
+
+    <fragment
+        android:id="@+id/page_inicio"
+        android:name="com.softulp.appgmaldonado.ui.inicio.InicioFragment"
+        tools:layout="@layout/fragment_inicio">
+        <action
+            android:id="@+id/action_inicioFragment_to_recetaFragment"
+            app:destination="@id/recetaFragment" />
+        <action
+            android:id="@+id/action_page_inicio_to_resultadosFragment"
+            app:destination="@id/resultadosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recetaFragment"
+        android:name="com.softulp.appgmaldonado.ui.inicio.RecetaFragment"
+        android:label="Receta"
+        tools:layout="@layout/fragment_receta_detalle">
+        <action
+            android:id="@+id/action_recetaFragment_to_page_inicio"
+            app:destination="@id/page_inicio" />
+        <action
+            android:id="@+id/action_recetaFragment_to_resultadosFragment"
+            app:destination="@id/resultadosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_agregar"
+        android:name="com.softulp.appgmaldonado.ui.agregar.RecetaAgregarFragment"
+        tools:layout="@layout/fragment_crear_receta" />
+
+    <fragment
+        android:id="@+id/page_buscar"
+        android:name="com.softulp.appgmaldonado.ui.buscar.BuscarFragment"
+        tools:layout="@layout/fragment_buscar">
+        <action
+            android:id="@+id/action_page_buscar_to_resultadosFragment"
+            app:destination="@id/resultadosFragment" />
+        <action
+            android:id="@+id/action_page_buscar_to_recetaFragment"
+            app:destination="@id/recetaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_perfil"
+        android:name="com.softulp.appgmaldonado.ui.perfil.PerfilFragment"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/resultadosFragment"
+        android:name="com.softulp.appgmaldonado.ui.buscar.ResultadosFragment"
+        android:label="fragment_resultados_categoria"
+        tools:layout="@layout/fragment_resultados_categoria" >
+        <action
+            android:id="@+id/action_resultadosFragment_to_recetaFragment"
+            app:destination="@id/recetaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/page_salir"
+        android:name="com.softulp.appgmaldonado.ui.salir.SalirFragment"
+        android:label="fragment_salir"
+        tools:layout="@layout/fragment_salir" />
+
+
+</navigation>

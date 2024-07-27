@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">appGMaldonado</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="inicio_de_s">
+Gourmet
+</string>
+    <string name="reg_de_s">
+Registrarse
+</string>
+    <string name="nombre1">
+Nombre
+</string>
+    <string name="apellido2">
+Apellido
+</string>
+    <string name="contra3">
+Contraseña
+</string>
+    <string name="email4">
+Email
+</string>
+    <string-array name="dificultad_array">
+            <item>Dificultad</item>
+            <item>Fácil</item>
+            <item>Medio</item>
+            <item>Difícil</item>
+        </string-array>
+
+        <string-array name="tipo_cocina_array">
+            <item>Categoría</item>
+            <item>Verdura</item>
+            <item>Carne Roja</item>
+            <item>Carne Blanca</item>
+            <item>Pescado</item>
+            <item>Pastas</item>
+        </string-array>
+
+</resources>

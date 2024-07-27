@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/black"
+    tools:context=".ui.perfil.PerfilFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E886A"
+        android:padding="0.1dp">
+
+
+        <ImageView
+            android:id="@+id/group_43"
+            android:layout_width="match_parent"
+            android:layout_height="317dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_fondoperfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:id="@+id/rectangle_4"
+            android:layout_width="369dp"
+            android:layout_height="490dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="116dp"
+
+            android:background="@drawable/cuadrado_perfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/etCodigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif"
+            android:padding="6dp"
+            android:text="Codigo"
+
+            android:textColor="#00DCE3E9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="4dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/icon_perfil"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_titulo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:elevation="4dp"
+            android:textAppearance="@style/inicio_de_gourmet"
+            android:gravity="center_horizontal|top"
+            android:text="@string/nombretitulo"
+     android:textSize="30dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="76dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:elevation="4dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="76dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/nombre"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:hint="Ej:Javier Garcia"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+        <TextView
+            android:id="@+id/txt_last_name"
+            android:layout_width="76dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="172dp"
+            android:elevation="4dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/apellido"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <EditText
+            android:id="@+id/editApellido"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:hint="Ej:Oviedo"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_last_name" />
+
+        <TextView
+            android:id="@+id/txt_email"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:elevation="4dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/email"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.098"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editApellido" />
+
+        <EditText
+            android:id="@+id/editCorreo"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:hint="Ej:javier@gmail.com"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btneditar"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_6"
+            android:elevation="4dp"
+            android:text="@string/editar"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCorreo" />
+
+
+        <ImageView
+            android:id="@+id/imagen_defa"
+            android:layout_width="369dp"
+            android:layout_height="315dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+
+            android:src="@drawable/imagen_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_4" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="124dp"
+            android:layout_height="54dp"
+            android:background="@drawable/rectangulo_subirft"
+            android:drawableStart="@drawable/icon_img"
+            android:drawablePadding="8dp"
+            android:fontFamily="sans-serif-black"
+            android:padding="8dp"
+            android:text="Subir"
+            android:elevation="4dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/imagen_defa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_4"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <View
+            android:id="@+id/rectangle_contraseña"
+            android:layout_width="369dp"
+            android:layout_height="490dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginTop="20dp"
+            android:background="@drawable/cuadrado_perfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_defa" />
+
+        <TextView
+            android:id="@+id/contrase_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="32dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/contrase_a"
+            android:textColor="@color/white"
+            android:elevation="4dp"
+            android:textAppearance="@style/contrase_a"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_defa" />
+
+        <TextView
+            android:id="@+id/contrase_a_"
+            android:layout_width="188dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/contrase_a_"
+            android:elevation="4dp"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.143"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrase_a" />
+
+        <TextView
+            android:id="@+id/contrase_a_n"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:elevation="4dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/contrase_a_n"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etClaveAntigua" />
+
+        <EditText
+            android:id="@+id/etClaveNueva"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:padding="10dp"
+            android:elevation="4dp"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrase_a_n" />
+
+        <TextView
+            android:id="@+id/contrase_a_n_repetir"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal|top"
+            android:elevation="4dp"
+            android:text="@string/contrase_a_n_repetir"
+            android:textAppearance="@style/nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.203"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etClaveNueva" />
+
+        <EditText
+            android:id="@+id/etConfirmarClaveNueva"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:padding="10dp"
+            android:elevation="4dp"
+            android:textColor="@color/black"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrase_a_n_repetir" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Confirmar"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_6"
+            android:elevation="4dp"
+            android:text="@string/editarpass"
+
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etConfirmarClaveNueva" />
+
+        <EditText
+            android:id="@+id/etClaveAntigua"
+            android:layout_width="346dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_receta_detalle"
+            android:padding="10dp"
+            android:elevation="4dp"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrase_a_" />
+
+        <TextView
+            android:layout_width="99dp"
+            android:layout_height="43dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_contraseña" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/fondo_views"
+    android:layout_height="match_parent"
+    tools:context=".ui.buscar.BuscarFragment">
+
+    <EditText
+        android:id="@+id/etBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:elevation="4dp"
+        android:background="@drawable/rectangle_receta_detalle"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textColorHint="#292828"
+        android:hint="Buscar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategorias"
+        android:background="@drawable/fondo_views"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/etBuscar"
+        android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
+</RelativeLayout>
+

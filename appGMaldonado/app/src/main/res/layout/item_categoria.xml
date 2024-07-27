@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F3F2F2"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/ivCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCategoria"
+        android:layout_width="396dp"
+        android:layout_height="50dp"
+        android:background="#A4000000"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:elevation="4dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCategoria"
+        app:layout_constraintEnd_toEndOf="@+id/ivCategoria"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ivCategoria"
+        app:layout_constraintTop_toTopOf="@+id/ivCategoria"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
