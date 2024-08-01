@@ -39,6 +39,7 @@ public class PerfilViewModel extends AndroidViewModel {
     private MutableLiveData<Usuario> mUsuario;
     private MutableLiveData<String> editar;
     private MutableLiveData<Boolean> activar;
+
     private MutableLiveData<Boolean> datosCompletos = new MutableLiveData<>();
     private Context context;
     public PerfilViewModel(@NonNull Application application) {

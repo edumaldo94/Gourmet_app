@@ -18,6 +18,7 @@ import com.softulp.appgmaldonado.modelo.ComentarioDto;
 import com.softulp.appgmaldonado.modelo.CrearComentarioDto;
 import com.softulp.appgmaldonado.modelo.Like;
 import com.softulp.appgmaldonado.modelo.Receta;
+import com.softulp.appgmaldonado.modelo.RecetaFavorita;
 import com.softulp.appgmaldonado.modelo.Usuario;
 import com.softulp.appgmaldonado.modelo.Wrapper;
 import com.softulp.appgmaldonado.request.ApiService;
@@ -33,21 +34,38 @@ import retrofit2.Response;
 public class InicioViewModel extends AndroidViewModel {
     private List<Like> userLikes; // Lista de likes del usuario
     private MutableLiveData<List<Receta>> recetas;
+    private MutableLiveData<List<Receta>> recetasFvt;
+    private MutableLiveData<Usuario> userActual;
+    private MutableLiveData<Boolean> isDataLoaded;
     private Context context;
 
     public InicioViewModel(@NonNull Application application) {
         super(application);
         context = application;
         recetas = new MutableLiveData<>();
+        userActual = new MutableLiveData<>();
+        recetasFvt= new MutableLiveData<>();
+        isDataLoaded = new MutableLiveData<>();
+        isDataLoaded.setValue(false);
         cargarDatos();
-
+        cargarRecetasFvt();
     }
 
     public LiveData<List<Receta>> getRecetas() {
         return recetas;
     }
     // Método para guardar el usuario logueado
+    public LiveData<Boolean> getIsDataLoaded() {
+        return isDataLoaded;
+    }
 
+    public MutableLiveData<List<Receta>> getRecetasFvt() {
+        return recetasFvt;
+    }
+
+    public LiveData<Usuario> getUserActual() {
+        return userActual;
+    }
 
     // Método para obtener el usuario logueado
     private Usuario getLoggedUser() {
@@ -84,7 +102,39 @@ public class InicioViewModel extends AndroidViewModel {
                         List<Receta> listaRecetas = apiResponse.getRecetas().getValues();
                         recetas.postValue(listaRecetas);
 
-                        Log.d("bebe", "E:" + listaRecetas.get(1).getRecetaID());
+
+                      Log.d("bebe", "Eweqweq:" + listaRecetas.size());
+                    } else {
+                        Log.d("TAG", "Error: Respuesta o lista de recetas nula");
+                    }
+                } else {
+                    Log.d("TAG", "Error en la respuesta de la API: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.d("API_CALL", "Error en la llamada a la API: " + t.getMessage());
+                Toast.makeText(context, "Error en la llamada a la API", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public void cargarRecetasFvt() {
+        String token = ApiService.leerToken(context);
+        ApiService.ApiInterface apiService = ApiService.getApiInterface();
+        Call<ApiResponse> llamada = apiService.ObtenerRecetasFvt(token);
+
+        llamada.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse != null && apiResponse.getRecetas() != null) {
+                        List<Receta> listaRecetasB = apiResponse.getRecetas().getValues();
+                        recetasFvt.postValue(listaRecetasB);
+
+
+                        //  Log.d("bebe", "E:" + listaRecetas.get(1).getRecetaID());
                     } else {
                         Log.d("TAG", "Error: Respuesta o lista de recetas nula");
                     }
@@ -236,7 +286,48 @@ public class InicioViewModel extends AndroidViewModel {
                 }
             });
         }
+    public void guardarRecetasFav(int recetaId) {
+        String token = ApiService.leerToken(context);
+        ApiService.ApiInterface apiService = ApiService.getApiInterface();
 
+        Call<Void> llamada = apiService.saveRecetasFavoritas(recetaId,token);
+        llamada.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("be22", "Like eliminado con éxito");
+                } else {
+                    Log.d("be33", "Error al eliminar like: " + response.message() + " Código: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d("be44", "Error en la llamada a la API: " + t.getMessage());
+            }
+        });
+    }
+    public void borrarRecetasFav(int recetaId) {
+        String token = ApiService.leerToken(context);
+        ApiService.ApiInterface apiService = ApiService.getApiInterface();
+
+        Call<Void> llamada = apiService.deleteRecetasFavoritas(recetaId,token);
+        llamada.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("be22", "Like eliminado con éxito");
+                } else {
+                    Log.d("be33", "Error al eliminar like: " + response.message() + " Código: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d("be44", "Error en la llamada a la API: " + t.getMessage());
+            }
+        });
+    }
         public boolean hasLiked(int recetaId) {
             if (userLikes != null) {
                 for (Like like : userLikes) {
@@ -261,7 +352,32 @@ public class InicioViewModel extends AndroidViewModel {
         }
     }
 
+    public void cargarRecetasUsuario(int usuarioId) {
+        String token = ApiService.leerToken(context);
+        ApiService.ApiInterface apiService = ApiService.getApiInterface();
+        Call<Wrapper<Receta>> llamada = apiService.ObtenerRecetaXUsuario(usuarioId, token);
 
+        llamada.enqueue(new Callback<Wrapper<Receta>>() {
+            @Override
+            public void onResponse(Call<Wrapper<Receta>> call, Response<Wrapper<Receta>> response) {
+                if (response.isSuccessful()) {
+                    // Receta wrapper = response.body();
+
+                    isDataLoaded.setValue(true);
+
+                } else {
+                    Log.d("BuscarViewModelCerte", "Error: " + response.raw());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Wrapper<Receta>> call, Throwable t) {
+                Log.d("BuscarViewModelCerte", "Failure: " + t.getMessage());
+
+            }
+        });
+    }
     }
 
 

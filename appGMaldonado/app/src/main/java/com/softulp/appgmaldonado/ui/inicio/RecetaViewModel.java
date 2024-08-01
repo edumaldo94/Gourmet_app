@@ -3,6 +3,7 @@ package com.softulp.appgmaldonado.ui.inicio;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -31,13 +32,14 @@ public class RecetaViewModel extends AndroidViewModel {
     private MutableLiveData<List<Receta>> recetasPorUsuario;
     private Context context;
     private MutableLiveData<Boolean> deleteResult = new MutableLiveData<>();
-
+    private MutableLiveData<List<Receta>> recetasFvt;
     public RecetaViewModel(@NonNull Application application) {
         super(application);
         context = application;
         receta = new MutableLiveData<>();
         labelSwitch = new MutableLiveData<>();
         recetasPorUsuario= new MutableLiveData<>();
+        recetasFvt= new MutableLiveData<>();
     }
     public LiveData<List<Receta>> getRecetasPorUsuario() {
         return recetasPorUsuario;
@@ -45,7 +47,9 @@ public class RecetaViewModel extends AndroidViewModel {
     public LiveData<Receta> getReceta() {
         return receta;
     }
-
+    public MutableLiveData<List<Receta>> getRecetasFvt() {
+        return recetasFvt;
+    }
     public LiveData<String> getLabelSwitch() {
         return labelSwitch;
     }
@@ -145,6 +149,38 @@ public class RecetaViewModel extends AndroidViewModel {
             public void onFailure(Call<Wrapper<Receta>> call, Throwable t) {
                 Log.d("BuscarViewModelCerte", "Failure: " + t.getMessage());
 
+            }
+        });
+    }
+
+    public void cargarRecetasFvt() {
+        String token = ApiService.leerToken(context);
+        ApiService.ApiInterface apiService = ApiService.getApiInterface();
+        Call<ApiResponse> llamada = apiService.ObtenerRecetasFvt(token);
+
+        llamada.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse != null && apiResponse.getRecetas() != null) {
+                        List<Receta> listaRecetasB = apiResponse.getRecetas().getValues();
+                        recetasFvt.postValue(listaRecetasB);
+
+
+                        //  Log.d("bebe", "E:" + listaRecetas.get(1).getRecetaID());
+                    } else {
+                        Log.d("TAG", "Error: Respuesta o lista de recetas nula");
+                    }
+                } else {
+                    Log.d("TAG", "Error en la respuesta de la API: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.d("API_CALL", "Error en la llamada a la API: " + t.getMessage());
+                Toast.makeText(context, "Error en la llamada a la API", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginActivityViewModel.class);
+        vm =  new ViewModelProvider(this).get(LoginActivityViewModel.class);
         vm.getMerror().observe(this, s -> {
             binding.tvErrorLogin.setText(s);
         });
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vm.login(binding.etCorreoLogin.getText().toString(),binding.etClaveLogin.getText().toString());
-
+                binding.etClaveLogin.setText("");
             }
         });
         binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,9 @@ public class LoginActivity extends AppCompatActivity {
                 vm.iniciarRecupero();
             }
         }); /**/
+
         solicitarPermisos();
+
     }
     @Override
     protected void onResume() {

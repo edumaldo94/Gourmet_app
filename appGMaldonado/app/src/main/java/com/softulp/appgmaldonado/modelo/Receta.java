@@ -40,13 +40,13 @@ public class Receta implements Serializable {
     private boolean mostrarComentarios;
     private boolean liked;
 
-
-    private boolean isLiked;
+    @SerializedName("esFavorita")
+    private boolean esFavorita;
 
     public Receta() {
     }
 
-    public Receta(Usuario usuario, String titulo, String descripcion, String ingredientes, String pasos, String porciones, String tiempoPreparacion, String dificultad, String tipoCocina, String fotoPortada, Like likes, Wrapper<Comentario> comentarios, boolean mostrarComentarios, boolean liked, boolean isLiked) {
+    public Receta(Usuario usuario, String titulo, String descripcion, String ingredientes, String pasos, String porciones, String tiempoPreparacion, String dificultad, String tipoCocina, String fotoPortada, Like likes, Wrapper<Comentario> comentarios, boolean mostrarComentarios, boolean liked, boolean esFavorita) {
         this.usuario = usuario;
         Titulo = titulo;
         this.descripcion = descripcion;
@@ -62,10 +62,10 @@ public class Receta implements Serializable {
         this.mostrarComentarios = mostrarComentarios;
         this.liked = liked;
 
-        this.isLiked = isLiked;
+        this.esFavorita = esFavorita;
     }
 
-    public Receta(int recetaId, Usuario usuario, String titulo, String descripcion, String ingredientes, String pasos, String porciones, String tiempoPreparacion, String dificultad, String tipoCocina, String fotoPortada, int cantidadComentarios, Like likes, Wrapper<Comentario> comentarios, boolean mostrarComentarios, boolean liked, boolean isLiked) {
+    public Receta(int recetaId, Usuario usuario, String titulo, String descripcion, String ingredientes, String pasos, String porciones, String tiempoPreparacion, String dificultad, String tipoCocina, String fotoPortada, int cantidadComentarios, Like likes, Wrapper<Comentario> comentarios, boolean mostrarComentarios, boolean liked, boolean esFavorita) {
         this.recetaId = recetaId;
         this.usuario = usuario;
         Titulo = titulo;
@@ -82,7 +82,7 @@ public class Receta implements Serializable {
         this.comentarios = comentarios;
         this.mostrarComentarios = mostrarComentarios;
         this.liked = liked;
-        this.isLiked = isLiked;
+        this.esFavorita = esFavorita;
     }
 
     public Receta(String titulo, String descripcion, String ingredientes, String pasos, String porciones, String tiempoPreparacion, String dificultad, String tipoCocina, String fotoPortada) {
@@ -235,4 +235,11 @@ public class Receta implements Serializable {
         this.liked = liked;
     }
 
+    public boolean isEsFavorita() {
+        return esFavorita;
+    }
+
+    public void setEsFavorita(boolean esFavorita) {
+        this.esFavorita = esFavorita;
+    }
 }

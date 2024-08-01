@@ -38,6 +38,25 @@
                 android:paddingTop="16dp"
                 tools:listitem="@layout/item_receta" />
 
+            <TextView
+                android:id="@+id/rctfav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:textAppearance="@style/inicio_de_gourmet"
+                android:background="#B412227E"
+                android:textAlignment="center"
+                android:elevation="4dp"
+                android:visibility="gone"
+                android:text="Recetas Favoritas"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerRFVTas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#D5D5D5"
+                tools:listitem="@layout/item_receta" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

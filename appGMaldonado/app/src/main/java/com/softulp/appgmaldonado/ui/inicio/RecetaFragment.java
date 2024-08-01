@@ -63,6 +63,7 @@ public class RecetaFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRecetaDetalleBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        binding.progressBar.setVisibility(View.VISIBLE);
         recetaViewModel = new ViewModelProvider(this).get(RecetaViewModel.class);
         incvm = new ViewModelProvider(this).get(InicioViewModel.class);
         Toolbar toolbar = binding.toolbar;
@@ -162,7 +163,7 @@ recetaViewModel.getReceta().observe(getViewLifecycleOwner(), new Observer<Receta
             disableEditTexts();
         }
 
-
+        binding.progressBar.setVisibility(View.GONE);
     }
 
 });

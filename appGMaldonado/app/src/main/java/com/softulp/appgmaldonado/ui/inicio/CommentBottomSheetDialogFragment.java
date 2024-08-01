@@ -35,12 +35,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.softulp.appgmaldonado.ui.perfil.PerfilViewModel;
+
 import java.util.List;
 
 public class CommentBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     private Receta receta;
     private InicioViewModel inicioViewModel;
+
     private CommentAdapter comentarioAdapter;
     private Context context;
     public CommentBottomSheetDialogFragment(Context context,Receta receta) {

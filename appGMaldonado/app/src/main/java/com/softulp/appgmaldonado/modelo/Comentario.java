@@ -17,7 +17,7 @@ import java.util.Date;
         private String comentario;
 
         private String fechaHora;
-        @SerializedName("recetaId")
+        @SerializedName("recetaID")
         private int RecetaID;
 
         private String Coment;

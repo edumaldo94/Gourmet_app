@@ -28,15 +28,16 @@ import com.softulp.appgmaldonado.modelo.Like;
 import com.softulp.appgmaldonado.modelo.Receta;
 import com.softulp.appgmaldonado.modelo.Usuario;
 import com.softulp.appgmaldonado.request.ApiService;
+import com.softulp.appgmaldonado.ui.perfil.PerfilViewModel;
 
 import java.util.List;
 
 public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.InicioViewHolder> {
     private Context context;
     private List<Receta> recetas;
+
     private LayoutInflater inflater;
     private InicioViewModel viewModel;
-
 
     public InicioAdapter(Context context, List<Receta> recetas, LayoutInflater inflater, InicioViewModel viewModel) {
         this.context = context;
@@ -50,6 +51,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.InicioView
         notifyDataSetChanged();
     }
 
+
     @NonNull
     @Override
     public InicioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,6 +62,8 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.InicioView
     @Override
     public void onBindViewHolder(@NonNull InicioViewHolder holder, int position) {
         Receta receta = recetas.get(position);
+
+
         holder.btnRecetaDetalle.setOnClickListener(v -> {
             // Get the NavController
             NavController navController = Navigation.findNavController((Activity) context, R.id.nav_hostfragment);
@@ -202,6 +206,25 @@ Log.d("teresa","sad "+usuarioActual.getNombre());
             holder.commentSection.setVisibility(visibility);
         });
         holder.cantComent.setText(String.valueOf(receta.getCantidadComentarios()));
+
+        // Actualizar el ícono del botón de favorito según el estado
+if(receta.isEsFavorita()== true){
+    holder.btnFavorito.setImageResource(R.drawable.ic_favoritored);
+}
+        holder.btnFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int recetaID=receta.getRecetaID();
+                if(receta.isEsFavorita()== true){
+                    viewModel.borrarRecetasFav(recetaID);
+                    holder.btnFavorito.setImageResource(R.drawable.ic_favorito);
+                }else {
+                    viewModel.guardarRecetasFav(recetaID);
+                    holder.btnFavorito.setImageResource(R.drawable.ic_favoritored);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -212,7 +235,7 @@ Log.d("teresa","sad "+usuarioActual.getNombre());
     public static class InicioViewHolder extends RecyclerView.ViewHolder {
         ImageView imgReceta, imgPerfil;
         TextView txtNombre, txtDescripcion;
-        ImageView btnComment,btnRecetaDetalle;
+        ImageView btnComment,btnRecetaDetalle,btnFavorito;
         ImageView btnLike;
         TextView likes;
         TextView cantComent;
@@ -238,6 +261,7 @@ Log.d("teresa","sad "+usuarioActual.getNombre());
             btnSendComment = itemView.findViewById(R.id.btnSendComment);
             commentSection = itemView.findViewById(R.id.commentSection);
             btnRecetaDetalle=itemView.findViewById(R.id.btnRecetaDetalle);
+            btnFavorito=itemView.findViewById(R.id.btnFavorito);
         }
     }
 }

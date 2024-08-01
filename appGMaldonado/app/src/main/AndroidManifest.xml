@@ -46,13 +46,13 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.perfil.RecuperarActivity"
             android:exported="false" />
         <activity
             android:name=".ui.inicio.CommentActivity"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />

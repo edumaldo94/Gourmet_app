@@ -22,13 +22,17 @@ import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.softulp.appgmaldonado.R;
+import com.softulp.appgmaldonado.databinding.FragmentInicioBinding;
 import com.softulp.appgmaldonado.databinding.FragmentPerfilBinding;
 import com.softulp.appgmaldonado.modelo.Usuario;
 import com.softulp.appgmaldonado.request.ApiService;
+import com.softulp.appgmaldonado.ui.inicio.InicioViewModel;
 
 
 public class PerfilFragment extends Fragment {
     private FragmentPerfilBinding binding;
+    private InicioViewModel inicioViewModel;
+    FragmentInicioBinding inicioBinding;
     private PerfilViewModel pvm;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private static final int SELECT_IMAGE_REQUEST = 1;
@@ -38,7 +42,7 @@ public class PerfilFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        inicioViewModel = new ViewModelProvider(this).get(InicioViewModel.class);
         pvm = new ViewModelProvider(this).get(PerfilViewModel.class);
 
         pvm.mUsuario().observe(getViewLifecycleOwner(), new Observer<Usuario>() {
@@ -64,6 +68,7 @@ binding.txtTituloName.setText(usuario.getNombre() +" "+usuario.getApellido());
                         .load(ApiService.URL_BASE + usuario.getFoto())
                         .placeholder(R.drawable.imagen_default)
                         .into(binding.imagenDefa);
+
 
             }
 

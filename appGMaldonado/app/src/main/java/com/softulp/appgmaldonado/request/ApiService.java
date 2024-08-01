@@ -137,6 +137,14 @@ public class ApiService {
 
         @DELETE("api/Comentario/{id}")
         Call<Void> borrarComentario(@Path("id") int comentarioId,@Header("Authorization") String token);
+        @POST("api/RecetasFavoritas/AgregarAFavoritos/{recetaId}")
+        Call<Void> saveRecetasFavoritas(@Path("recetaId") int recetaId, @Header("Authorization") String token);
+
+        @DELETE("api/RecetasFavoritas/EliminarDeFavoritos/{recetaId}")
+        Call<Void> deleteRecetasFavoritas(@Path("recetaId") int recetaId, @Header("Authorization") String token);
+
+        @GET("api/RecetasFavoritas/ObtenerFavoritas")
+        Call<ApiResponse> ObtenerRecetasFvt(@Header("Authorization") String token);
 
     }
 

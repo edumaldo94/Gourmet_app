@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,17 +38,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.softulp.appgmaldonado.R;
 import com.softulp.appgmaldonado.modelo.Comentario;
+import com.softulp.appgmaldonado.ui.perfil.PerfilViewModel;
+
 import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     private List<Comentario> comentarios;
     private InicioViewModel inicioViewModel;
+
     private Context context;
+    boolean verificador;
     public CommentAdapter(Context context,List<Comentario> comentarios, InicioViewModel inicioViewModel) {
         this.context = context;
         this.comentarios = comentarios;
         this.inicioViewModel = inicioViewModel;
+
     }
 
     @NonNull
@@ -60,34 +66,51 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comentario comentario = comentarios.get(position);
-        holder.textViewUsuario.setText(comentario.getUsuario().getNombre());
+        holder.textViewUsuario.setText("@"+comentario.getUsuario().getNombre()+comentario.getUsuario().getApellido());
         holder.textViewComentario.setText(comentario.getComentario());
         Glide.with(context)
-                .load(ApiService.URL_BASE+comentario.getUsuario().getFoto())
+                .load(ApiService.URL_BASE + comentario.getUsuario().getFoto())
                 .placeholder(R.drawable.imagen_default)
                 .into(holder.imgperfil);
+
+        // Obtener el usuario actual de manera asíncrona
         Usuario usuarioActual = inicioViewModel.getUsuarioActual();
-        int comentRecetaId = comentario.getRecetaID();
 
-        if (usuarioActual != null) {
-            if (usuarioActual.getUsuarioID() == comentario.getUsuario().getUsuarioID() || usuarioActual.getUsuarioID() == comentRecetaId) {
-                holder.btnDelete.setVisibility(View.VISIBLE);
-                holder.btnDelete.setOnClickListener(v -> {
-                    if (position < comentarios.size()) {
+        // Observa los cambios en el LiveData de recetas
+        inicioViewModel.getRecetas().observe((LifecycleOwner) context, recetas -> {
+            boolean esAutorDeLaReceta = false;
 
-                        inicioViewModel.eliminarComentario(comentario.getComentarioID());
-                        comentarios.remove(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, comentarios.size());
+            if (usuarioActual != null && recetas != null) {
+                for (Receta recetab : recetas) {
+                    if (recetab.getRecetaID() == comentario.getRecetaID()) {
+                        if (recetab.getUsuario().getUsuarioID() == usuarioActual.getUsuarioID()) {
+                            esAutorDeLaReceta = true;
+                        }
+                        break;
                     }
-                });
+                }
+
+                boolean esComentarioPropio = comentario.getUsuario().getUsuarioID() == usuarioActual.getUsuarioID();
+
+                if (esAutorDeLaReceta || esComentarioPropio) {
+                    holder.btnDelete.setVisibility(View.VISIBLE);
+                    holder.btnDelete.setOnClickListener(v -> {
+                        if (position < comentarios.size()) {
+                            inicioViewModel.eliminarComentario(comentario.getComentarioID());
+                            comentarios.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, comentarios.size());
+                        }
+                    });
+                } else {
+                    holder.btnDelete.setVisibility(View.GONE);
+                }
             } else {
                 holder.btnDelete.setVisibility(View.GONE);
             }
-        } else {
-            holder.btnDelete.setVisibility(View.GONE);
-        }
+        });
     }
+
 
     @Override
     public int getItemCount() {
